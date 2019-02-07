@@ -24,6 +24,11 @@ def generateKeys():
     file_out = open("public.pem", "wb")
     file_out.write(public_key)
 
+    print("Keys Generated! Returning to menu...")
+    time.sleep(1)
+
+    menu()
+
 ##############
 # ENCRYPTION #
 ##############
@@ -41,6 +46,9 @@ def encryptMessage():
     cipher_aes = AES.new(session_key, AES.MODE_EAX)
     ciphertext, tag = cipher_aes.encrypt_and_digest(data)
     [ file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext) ]
+
+    print("Encryption Sucessful! Exiting...")
+    time.sleep(1)
 
 ##############
 # DECRYPTION #
@@ -60,7 +68,10 @@ def decryptMessage():
 
     cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
     data = cipher_aes.decrypt_and_verify(ciphertext, tag)
-    file_out.write(data.decode("utf-8"))
+    file_out.write(data)
+
+    print("Decryption Sucessful! Exiting...")
+    time.sleep(1)
 
 #################
 # CLI INTERFACE #
@@ -69,13 +80,13 @@ def decryptMessage():
 def menu():
     os.system("clear")
 
-    cprint(pyfiglet.figlet_format("PyRSA", font = "alligator"), "white", attrs=["bold"])
+    cprint(pyfiglet.figlet_format("P Y R S A", font = "alligator"), "blue", attrs=["bold"])
 
     print("Available Modes:\n"
     "[0] RSA Key Generation\n"
     "[1] Encryption\n"
     "[2] Decryption\n"
-    "[99] Exit"
+    "[99] Exit\n"
     )
     mode = input("MODE SELECTION > ")
 
@@ -89,11 +100,13 @@ def menu():
         decryptMessage()
 
     elif mode == "99":
-        print("[i] Seeya later partner!")
+        print("\n[i] Seeya later partner!")
+        time.sleep(1)
+        os.system("clear")
         sys.exit()
 
     else:
-        print("[!] CRITICAL: Invalid command!")
+        print("\n[!] CRITICAL: Invalid command!")
         
         time.sleep(2)
 

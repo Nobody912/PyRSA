@@ -1,3 +1,9 @@
+#
+# P y R S A
+# ver. 0.1
+# 
+#
+
 import sys
 import os
 import time
@@ -24,17 +30,14 @@ def generateKeys():
     file_out = open("public.pem", "wb")
     file_out.write(public_key)
 
-    print("Keys Generated! Returning to menu...")
-    time.sleep(1)
-
-    menu()
+    print("Keys Generated! Exiting...")
 
 ##############
 # ENCRYPTION #
 ##############
 
 def encryptMessage():
-    data = input("MSG > ").encode("utf-8")
+    data = input("Message > ").encode("utf-8")
     file_out = open("encrypted_data.bin", "wb")
 
     recipient_key = RSA.import_key(open("public.pem").read())

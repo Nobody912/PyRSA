@@ -1,2 +1,2 @@
 # PyRSA
-david is pretty homo
+## A simple implementation of PyCryptodome

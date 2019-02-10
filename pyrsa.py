@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-#
-# P y R S A
+
+# - - - - -
+# P Y R S A
 # ver. 0.1
 # Erik Ji | Nobody912
-#
+# https://github.com/Nobody912/PyRSA
+# - - - - -
 
 import sys
 import os
 import time
-
-import click
 
 import pyfiglet
 
@@ -83,7 +83,6 @@ def decryptMessage():
 # CLI INTERFACE #
 #################
 
-@click.command()
 def main():
     os.system("clear")
 

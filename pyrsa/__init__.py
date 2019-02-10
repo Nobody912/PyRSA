@@ -1,12 +1,15 @@
+#!/usr/bin/env python3
 #
 # P y R S A
 # ver. 0.1
-# 
+# Erik Ji | Nobody912
 #
 
 import sys
 import os
 import time
+
+import click
 
 import pyfiglet
 
@@ -80,7 +83,8 @@ def decryptMessage():
 # CLI INTERFACE #
 #################
 
-def menu():
+@click.command()
+def main():
     os.system("clear")
 
     cprint(pyfiglet.figlet_format("P Y R S A", font = "alligator"), "blue", attrs=["bold"])
@@ -114,6 +118,7 @@ def menu():
         time.sleep(2)
 
         input("Press [Enter] to continue")
-        menu()
+        main()
 
-menu()
+if __name__ == "__main__":
+    main()

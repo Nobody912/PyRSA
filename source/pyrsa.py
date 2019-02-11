@@ -39,8 +39,9 @@ def generateKeys():
 # ENCRYPTION #
 ##############
 
-def encryptMessage():
+def encryptData():
     data = input("Message > ").encode("utf-8")
+
     file_out = open("encrypted_data.bin", "wb")
 
     recipient_key = RSA.import_key(open("public.pem").read())
@@ -50,7 +51,7 @@ def encryptMessage():
     enc_session_key = cipher_rsa.encrypt(session_key)
 
     cipher_aes = AES.new(session_key, AES.MODE_EAX)
-    ciphertext, tag = cipher_aes.encrypt_and_digest(data)
+    ciphertext, tag = cipher_aes.encrypt_and_digest(data.encode("utf-8"))
     [ file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext) ]
 
     print("Encryption Sucessful! Exiting...")
@@ -60,7 +61,7 @@ def encryptMessage():
 # DECRYPTION #
 ##############
 
-def decryptMessage():
+def decryptData():
     file_in = open("encrypted_data.bin", "rb")
     file_out = open("decrypted_data.txt", "wb")
 
@@ -119,10 +120,10 @@ def main():
         generateKeys()
 
     elif mode == "2":
-        encryptMessage()
+        encryptData()
 
     elif mode == "3":
-        decryptMessage()
+        decryptData()
 
     elif mode == "e":
         print("\n[i] Seeya later partner!")

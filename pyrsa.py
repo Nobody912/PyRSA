@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-# - - - - -
-# P Y R S A
-# ver. 0.1
+# - I N F O -
+# P Y R S A 
+# ver. 0.1 | Standalone
 # Erik Ji | Nobody912
 # https://github.com/Nobody912/PyRSA
-# - - - - -
+# - - - - - -
 
 import sys
 import os
@@ -87,25 +87,44 @@ def main():
     os.system("clear")
 
     cprint(pyfiglet.figlet_format("P Y R S A", font = "alligator"), "blue", attrs=["bold"])
+    cprint("[ver. 0.1] > Pre-Release Edition", "blue", attrs=["bold"])
 
-    print("Available Modes:\n"
-    "[0] RSA Key Generation\n"
-    "[1] Encryption\n"
-    "[2] Decryption\n"
-    "[99] Exit\n"
+    print(
+    "\n"
+    "Available Modes:\n"
+    "[0] Information\n"
+    "[1] RSA Key Generation\n"
+    "[2] Encryption\n"
+    "[3] Decryption\n"
+    "[e] Exit\n"
     )
     mode = input("MODE SELECTION > ")
 
     if mode == "0":
-        generateKeys()
+        print(
+        "\n"
+        "I N F O: \n"
+        "PyRSA \n"
+        "[ver. 0.1] > Pre-Release Edition \n"
+        "Python Standalone Edition \n"
+        "Erik Ji | Nobody912 \n"
+        "https://github.com/Nobody912/PyRSA \n"
+        )
+
+        time.sleep(5)
+        os.system("clear")
+        main()
 
     elif mode == "1":
-        encryptMessage()
+        generateKeys()
 
     elif mode == "2":
+        encryptMessage()
+
+    elif mode == "3":
         decryptMessage()
 
-    elif mode == "99":
+    elif mode == "e":
         print("\n[i] Seeya later partner!")
         time.sleep(1)
         os.system("clear")

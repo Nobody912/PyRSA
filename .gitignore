@@ -124,3 +124,4 @@ dmypy.json
 
 # sdist
 MANIFEST
+.DS_Store

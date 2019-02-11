@@ -8,7 +8,6 @@ setup(name='PyRSA',
     author='Erik Ji',
     author_email='erikji@tuta.io',
     license='MIT',
-    packages=['pyrsa',],
     scripts=['bin/pyrsa',],
     dependency_links=[
         'https://github.com/pwaller/pyfiglet/tarball/0.7.3',

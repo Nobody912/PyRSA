@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 
-# - I N F O -
-# P Y R S A 
-# ver. 0.1 | Standalone
-# Erik Ji | Nobody912
-# https://github.com/Nobody912/PyRSA
-# - - - - - -
-
 import sys
 import os
 import time
@@ -40,9 +33,26 @@ def generateKeys():
 ##############
 
 def encryptData():
-    data = input("Message > ").encode("utf-8")
+    data_type = input("Message or File (m/f) > ")
 
-    file_out = open("encrypted_data.bin", "wb")
+    if data_type == "f":
+        filename = input("Source Filename > ")
+        data = open(filename).read().encode("utf-8")
+
+    elif data_type == "m":
+        filename = input("New Filename > ")
+        data = input("Message > ").encode("utf-8")
+
+    else:
+        print("\n[!] CRITICAL: Invalid option!")
+        
+        time.sleep(2)
+
+        input("Press [Enter] to continue")
+
+        encryptData()
+
+    file_out = open(filename + ".bin", "wb")
 
     recipient_key = RSA.import_key(open("public.pem").read())
     session_key = get_random_bytes(16)
@@ -51,7 +61,7 @@ def encryptData():
     enc_session_key = cipher_rsa.encrypt(session_key)
 
     cipher_aes = AES.new(session_key, AES.MODE_EAX)
-    ciphertext, tag = cipher_aes.encrypt_and_digest(data.encode("utf-8"))
+    ciphertext, tag = cipher_aes.encrypt_and_digest(data)
     [ file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext) ]
 
     print("Encryption Sucessful! Exiting...")
@@ -62,8 +72,10 @@ def encryptData():
 ##############
 
 def decryptData():
-    file_in = open("encrypted_data.bin", "rb")
-    file_out = open("decrypted_data.txt", "wb")
+    filename = input("Enter file > ")
+
+    file_in = open(filename, "rb")
+    file_out = open(filename.replace(".bin", "") , "wb")
 
     private_key = RSA.import_key(open("private.pem").read())
 
@@ -88,42 +100,41 @@ def main():
     os.system("clear")
 
     cprint(pyfiglet.figlet_format("P Y R S A", font = "alligator"), "blue", attrs=["bold"])
-    cprint("[ver. 0.1] > Pre-Release Edition", "blue", attrs=["bold"])
 
-    print(
-    "\n"
-    "Available Modes:\n"
-    "[0] Information\n"
-    "[1] RSA Key Generation\n"
-    "[2] Encryption\n"
-    "[3] Decryption\n"
-    "[e] Exit\n"
-    )
+    print('''
+Available Modes:
+[1] RSA Key Generation
+[2] Encryption
+[3] Decryption
+[i] Information
+[e] Exit
+    ''')
     mode = input("MODE SELECTION > ")
 
-    if mode == "0":
-        print(
-        "\n"
-        "I N F O: \n"
-        "PyRSA \n"
-        "[ver. 0.1] > Pre-Release Edition \n"
-        "Python Standalone Edition \n"
-        "Erik Ji | Nobody912 \n"
-        "https://github.com/Nobody912/PyRSA \n"
-        )
+    if mode == "1":
+        generateKeys()
+        main()
+
+    elif mode == "2":
+        encryptData()
+        main()
+    elif mode == "3":
+        decryptData()
+        main()
+
+    elif mode == "i":
+        print('''
+I N F O:
+PyRSA
+[ver. 1.0] > Pre-Release Edition
+Python Standalone Edition
+Erik Ji | Nobody912
+https://github.com/Nobody912/PyRSA
+        ''')
 
         time.sleep(5)
         os.system("clear")
         main()
-
-    elif mode == "1":
-        generateKeys()
-
-    elif mode == "2":
-        encryptData()
-
-    elif mode == "3":
-        decryptData()
 
     elif mode == "e":
         print("\n[i] Seeya later partner!")

@@ -2,3 +2,4 @@
 include setup.py
 include source/*
 include README.md
+include scripts/*

@@ -1,13 +1,20 @@
 # PyRSA
+
 ## A simple implementation of PyCryptodome for RSA encryption in a CLI interface.
+
+PyRSA is a basic RSA client for handling text messages and files. This utility's feature set includes a 2048-bit RSA encryption key-pair generator and a encryption/decryption tool.
+
 PyRSA comes equipped with state-of-the-art encryption technology from PyCryptodome, a self-contained cryptographic library.
 
 ### Installation
-```
+
+```text
 git clone https://github.com/Nobody912/PyRSA.git
 python3 setup.py install
 pyrsa
 ```
 
 ### Programmer's Notes
+
 This is my first Python project and my first project on GitHub. Please be nice.
+This is a project out of hobby and low-profile usage. I am *NOT* responsible for any damaged or lost data.

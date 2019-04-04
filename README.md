@@ -1,4 +1,4 @@
-<img src="logo/pyrsa_logo.png" alt="logo" width="25%"/>
+<img src="logo/pyrsa_logo.png" alt="logo" width="25%" align="center"/>
 
 # PyRSA
 

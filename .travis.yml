@@ -9,5 +9,5 @@ install:
   - pip3 install halo
   - pip3 install pyfiglet
 
-after_install:
-  - python3 test_pyrsa.py
+script:
+  - test_pyrsa.py

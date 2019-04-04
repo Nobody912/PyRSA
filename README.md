@@ -1,6 +1,6 @@
-# PyRSA
+<img src="logo/pyrsa_logo.png" alt="logo" width="25%"/>
 
-![logo](logo/pyrsa_logo.png)
+# PyRSA
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/Nobody912/PyRSA.svg?branch=master)](https://travis-ci.org/Nobody912/PyRSA)

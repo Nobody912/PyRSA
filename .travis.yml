@@ -10,4 +10,4 @@ install:
   - pip3 install pyfiglet
 
 script:
-  - test_pyrsa.py
+  - python3 test_pyrsa.py

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PyRSA",
-    python_requires='>3',
+    python_requires='>3.4',
     version="1.0",
     author="Erik Ji",
     author_email="erikji@tuta.io",

@@ -5,22 +5,21 @@ import sys
 import os
 import time
 
-import pyfiglet
-from termcolor import colored, cprint
-from halo import Halo
-
 from Crypto.PublicKey import RSA
 from Crypto.Random import get_random_bytes
 from Crypto.Cipher import AES, PKCS1_OAEP
+import pyfiglet
+from halo import Halo
+from termcolor import cprint
 
-if sys.version_info < (3,0):
+if sys.version_info < (3, 0):
     sys.exit('Sorry, Python < 3.0 is not supported')
 
 #####################################
 # PUBLIC AND PRIVATE KEY GENERATION #
 #####################################
 
-def generateKeys():
+def generate_keys():
     key = RSA.generate(2048)
     private_key = key.export_key()
     file_out = open("private.pem", "wb")
@@ -37,8 +36,8 @@ def generateKeys():
 # ENCRYPTION #
 ##############
 
-def encryptData():
-    print("[i] Zip files are preferred for compatibility purposes.");
+def encrypt_data():
+    print("[i] Zip files are preferred for compatibility purposes.")
     data_type = input("Message or File (m/f) > ")
 
     if data_type == "f":
@@ -56,7 +55,7 @@ def encryptData():
         data = input("Message > ").encode("utf-8")
 
     else:
-        print("\n[!] CRITICAL: Invalid option!") 
+        print("\n[!] CRITICAL: Invalid option!")
         time.sleep(2)
         input("Press [Enter] to continue.")
         main()
@@ -75,7 +74,7 @@ def encryptData():
 
     cipher_aes = AES.new(session_key, AES.MODE_EAX)
     ciphertext, tag = cipher_aes.encrypt_and_digest(data)
-    [ file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext) ]
+    _ = [file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext)]
 
     spinner.stop()
     print("[i] Encryption Sucessful! Exiting...")
@@ -85,11 +84,11 @@ def encryptData():
 # DECRYPTION #
 ##############
 
-def decryptData():
+def decrypt_data():
     filename = input("Enter file > ")
 
     file_in = open(filename, "rb")
-    file_out = open(filename.replace(".bin", "") , "wb")
+    file_out = open(filename.replace(".bin", ""), "wb")
 
     spinner = Halo(text='Encrypting...', spinner='dots')
     spinner.start()
@@ -97,7 +96,7 @@ def decryptData():
     private_key = RSA.import_key(open("private.pem").read())
 
     enc_session_key, nonce, tag, ciphertext = \
-    [ file_in.read(x) for x in (private_key.size_in_bytes(), 16, 16, -1) ]
+    _ = [file_in.read(x) for x in (private_key.size_in_bytes(), 16, 16, -1)]
 
     cipher_rsa = PKCS1_OAEP.new(private_key)
     session_key = cipher_rsa.decrypt(enc_session_key)
@@ -117,7 +116,7 @@ def decryptData():
 def main():
     os.system("clear")
 
-    cprint(pyfiglet.figlet_format("P Y R S A", font = "alligator"), "blue", attrs=["bold"])
+    cprint(pyfiglet.figlet_format("P Y R S A", font="alligator"), "blue", attrs=["bold"])
     print('''
 Available Modes:
 [1] RSA Key Generation
@@ -129,14 +128,14 @@ Available Modes:
     mode = input("MODE SELECTION > ")
 
     if mode == "1":
-        generateKeys()
+        generate_keys()
         main()
 
     elif mode == "2":
-        encryptData()
+        encrypt_data()
         main()
     elif mode == "3":
-        decryptData()
+        decrypt_data()
         main()
 
     elif mode == "i":
@@ -160,7 +159,7 @@ https://github.com/Nobody912/PyRSA
         sys.exit()
 
     else:
-        print("\n[!] CRITICAL: Invalid command!") 
+        print("\n[!] CRITICAL: Invalid command!")
         time.sleep(2)
         input("Press [Enter] to continue.")
         main()

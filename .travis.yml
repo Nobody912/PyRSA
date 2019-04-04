@@ -15,6 +15,3 @@ install:
 
 script:
   - src/pyrsa/pyrsa.py
-
-virtualenv:
-  system_site_packages: true

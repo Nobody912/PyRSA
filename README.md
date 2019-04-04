@@ -1,5 +1,8 @@
 # PyRSA
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/Nobody912/PyRSA.svg?branch=master)](https://travis-ci.org/Nobody912/PyRSA)
+
 ## A simple implementation of PyCryptodome for RSA encryption in a CLI interface.
 
 PyRSA is a basic RSA client for handling text messages and files. This utility's feature set includes a 2048-bit RSA encryption key-pair generator and a encryption/decryption tool.

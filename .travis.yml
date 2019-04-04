@@ -8,6 +8,7 @@ install:
   - pip3 install termcolor
   - pip3 install halo
   - pip3 install pyfiglet
+  - pip3 install pylint
 
 script:
   - pylint pyrsa.py

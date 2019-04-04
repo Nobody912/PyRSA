@@ -1,5 +1,15 @@
 language: python
 python: 
-  - "3.7" 
+  - 3.7 
+
+before_script:
+  - pip3 install pycryptodome
+  - pip3 install termcolor
+  - pip3 install halo
+  - pip3 install pyfiglet
+
+script:
+  - src/pyrsa/pyrsa.py
+
 virtualenv:
   system_site_packages: true

@@ -9,7 +9,7 @@
 ![GitHub Releases](https://img.shields.io/github/downloads/nobody912/pyrsa/latest/total.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/nobody912/pyrsa.svg)
 ![GitHub stars](https://img.shields.io/github/stars/nobody912/pyrsa.svg)
-![Ass: Eaten](https://img.shields.io/badge/Ass-Eaten-green.svg)
+![Ass: Eaten](https://img.shields.io/badge/Ass-Eaten-success.svg)
 
 ## A simple implementation of PyCryptodome for RSA encryption in a CLI interface.
 

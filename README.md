@@ -1,8 +1,11 @@
 # PyRSA
 
+![logo](logo/pyrsa_logo.png)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/Nobody912/PyRSA.svg?branch=master)](https://travis-ci.org/Nobody912/PyRSA)
 ![GitHub Releases](https://img.shields.io/github/downloads/nobody912/pyrsa/latest/total.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/nobody912/pyrsa.svg)
 
 ## A simple implementation of PyCryptodome for RSA encryption in a CLI interface.
 

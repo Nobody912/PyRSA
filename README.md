@@ -9,13 +9,10 @@
 ![GitHub Releases](https://img.shields.io/github/downloads/nobody912/pyrsa/latest/total.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/nobody912/pyrsa.svg)
 ![GitHub stars](https://img.shields.io/github/stars/nobody912/pyrsa.svg)
-![Ass: Eaten](https://img.shields.io/badge/Ass-Eaten-success.svg)
 
 ## A simple implementation of PyCryptodome for RSA encryption in a CLI interface.
 
-PyRSA is a basic RSA client for handling text messages and files. This utility's feature set includes a 2048-bit RSA encryption key-pair generator and a encryption/decryption tool.
-
-PyRSA comes equipped with state-of-the-art encryption technology from PyCryptodome, a self-contained cryptographic library.
+PyRSA is a basic RSA client for handling text messages and files. This utility's feature set includes a 2048-bit RSA encryption key-pair generator and a encryption/decryption tool. PyRSA comes equipped with state-of-the-art encryption technology from PyCryptodome, a self-contained cryptographic library.
 
 ### Installation
 
@@ -24,6 +21,8 @@ git clone https://github.com/Nobody912/PyRSA.git
 python3 setup.py install
 pyrsa
 ```
+
+PyRSA is made for Python version 3.5 and above.
 
 ### Programmer's Notes
 

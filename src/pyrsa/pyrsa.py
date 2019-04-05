@@ -12,8 +12,8 @@ import pyfiglet
 from halo import Halo
 from termcolor import cprint
 
-if sys.version_info < (3, 0):
-    sys.exit('Sorry, Python < 3.0 is not supported')
+if sys.version_info < (3, 4):
+    sys.exit('Sorry, Python < 3.4 is not supported')
 
 #####################################
 # PUBLIC AND PRIVATE KEY GENERATION #
@@ -29,8 +29,9 @@ def generate_keys():
     file_out = open("public.pem", "wb")
     file_out.write(public_key)
 
-    print("[i] Keys Generated! Exiting...")
-    time.sleep(1)
+    print("[i] Keys Generated!")
+    input("Press [Enter] to continue.")
+    main()
 
 ##############
 # ENCRYPTION #
@@ -56,7 +57,6 @@ def encrypt_data():
 
     else:
         print("\n[!] CRITICAL: Invalid option!")
-        time.sleep(2)
         input("Press [Enter] to continue.")
         main()
 
@@ -77,8 +77,9 @@ def encrypt_data():
     _ = [file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext)]
 
     spinner.stop()
-    print("[i] Encryption Sucessful! Exiting...")
-    time.sleep(1)
+    print("[i] Encryption Sucessful!")
+    input("Press [Enter] to continue.")
+    main()
 
 ##############
 # DECRYPTION #
@@ -106,8 +107,9 @@ def decrypt_data():
     file_out.write(data)
 
     spinner.stop()
-    print("[i] Decryption Sucessful! Exiting...")
-    time.sleep(1)
+    print("[i] Decryption Sucessful!")
+    input("Press [Enter] to continue.")
+    main()
 
 #################
 # CLI INTERFACE #
@@ -148,19 +150,18 @@ Erik Ji | Nobody912
 https://github.com/Nobody912/PyRSA
         ''')
 
-        time.sleep(5)
+        input("Press [Enter] to continue.")
         os.system("clear")
         main()
 
     elif mode == "e":
         print("\n[i] Seeya later partner!")
-        time.sleep(1)
+        input("Press [Enter] to continue.")
         os.system("clear")
         sys.exit()
 
     else:
         print("\n[!] CRITICAL: Invalid command!")
-        time.sleep(2)
         input("Press [Enter] to continue.")
         main()
 

@@ -11,4 +11,4 @@ install:
   - pip3 install pylint
 
 script:
-  - pylint src/pyrsa/pyrsa.py --disable=missing-docstring
+  - pylint pyrsa/pyrsa.py --disable=missing-docstring

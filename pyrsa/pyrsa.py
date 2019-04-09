@@ -3,7 +3,6 @@
 
 import sys
 import os
-import time
 
 from Crypto.PublicKey import RSA
 from Crypto.Random import get_random_bytes

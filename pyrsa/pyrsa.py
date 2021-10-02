@@ -24,9 +24,13 @@ def generate_keys():
     file_out = open("private.pem", "wb")
     file_out.write(private_key)
 
+    file_out.close()
+
     public_key = key.publickey().export_key()
     file_out = open("public.pem", "wb")
     file_out.write(public_key)
+    
+    file_out.close()
 
     print("[i] Keys Generated!")
     input("Press [Enter] to continue.")
@@ -75,6 +79,8 @@ def encrypt_data():
     ciphertext, tag = cipher_aes.encrypt_and_digest(data)
     _ = [file_out.write(x) for x in (enc_session_key, cipher_aes.nonce, tag, ciphertext)]
 
+    file_out.close()
+
     spinner.stop()
     print("[i] Encryption Sucessful!")
     input("Press [Enter] to continue.")
@@ -90,7 +96,7 @@ def decrypt_data():
     file_in = open(filename, "rb")
     file_out = open(filename.replace(".bin", ""), "wb")
 
-    spinner = Halo(text='Encrypting...', spinner='dots')
+    spinner = Halo(text='Decrypting...', spinner='dots')
     spinner.start()
 
     private_key = RSA.import_key(open("private.pem").read())
@@ -104,6 +110,9 @@ def decrypt_data():
     cipher_aes = AES.new(session_key, AES.MODE_EAX, nonce)
     data = cipher_aes.decrypt_and_verify(ciphertext, tag)
     file_out.write(data)
+
+    file_in.close()
+    file_out.close()
 
     spinner.stop()
     print("[i] Decryption Sucessful!")
